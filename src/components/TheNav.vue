@@ -1,23 +1,23 @@
 <template>
   <nav class="sticky bottom-0 z-10 bg-white">
     <ul class="flex items-center justify-around border-t">
-      <li v-for="(icon, page) in navItems" :key="icon" class="flex-1">
-        <a class="flex flex-col items-center p-2 text-xs capitalize" :href="`#${page}`">
-          <component :is="icon" class="h-6 w-6" />
-          {{ page }}</a>
-      </li>
+      <NavItem v-for="(icon, page) in navItems" :key="icon" :href="`#${page}`">
+        <component :is="icon" class="h-6 w-6" />
+        {{ page }}
+      </NavItem>
     </ul>
   </nav>
 </template>
 
 <script setup>
+import NavItem from '@/components/NavItem.vue'
 import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
 
 const navItems = {
   timeline: ClockIcon,
   activities: ListBulletIcon,
   progress: ChartBarIcon
-};
+}
 </script>
 
 <style scoped>
