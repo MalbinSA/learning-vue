@@ -19,20 +19,11 @@ import TheNav from './components/TheNav.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
-import { PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE } from '@/constants'
 import { ref } from 'vue'
+import { normalizePageHash } from '/function'
+import { PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE } from '/constants'
 
 const currentPage = ref(normalizePageHash())
-
-function normalizePageHash() {
-  const hash = window.location.hash.slice(1);
-
-  if ([PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE].includes(hash)) {
-    return hash
-  } else {
-    return window.location.hash = PAGE_TIMELINE
-  }
-}
 
 function goTo(page){
   currentPage.value = page
